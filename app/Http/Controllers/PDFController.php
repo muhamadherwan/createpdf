@@ -28,18 +28,21 @@ class PDFController extends Controller
 
 
         // // current stable
-        // // $html = view('inv3')->render();
-        // // $pdf = PDF::loadHtml($html);
+        $html = view('float')->render();
+        $pdf = PDF::loadHtml($html);
 
         // // addon part
         // PDF::setOptions($options);
         // $pdf = PDF::loadHtml($html);
 
         // // current stable part
-        // $pdf->setPaper('A4',    'portrait'); // setup the paper and orientation
-        // $pdf->render(); // render the html as pdf
-        // return $pdf->stream('document.pdf'); // output the generated pdf to browser
+        $pdf->setPaper('A4','portrait'); // setup the paper and orientation
+        $pdf->render(); // render the html as pdf
 
+        return $pdf->stream('preview.pdf'); // if want to output the generated pdf to browser (preview)
+        // return $pdf->download('download.pdf'); // if want to auto download the generated pdf
+
+        // return view('float');
         // $html = '<div style="display: flex; flex-direction: row; justify-content: space-between;">
         //     <div>First column</div>
         //     <div>Second column</div>
@@ -56,11 +59,11 @@ class PDFController extends Controller
 
 
 
-    //    return view('inv3');
-       return view('myPDF');
-
-
-
+        // return view('bts');
+        //    return view('inv2');    
+            //   return view('inv3');
+           //    return view('myPDF');
+      
 
     }
 }
