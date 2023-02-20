@@ -28,7 +28,7 @@ class PDFController extends Controller
 
 
         // // current stable
-        $html = view('float')->render();
+        $html = view('header')->render();
         $pdf = PDF::loadHtml($html);
 
         // // addon part
