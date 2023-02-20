@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Spipu\Html2Pdf\Html2Pdf;
-use Illuminate\Http\Request;
 use PDF;
+use Illuminate\Http\Request;
+
 
 class PDFController extends Controller
 {
@@ -27,19 +27,26 @@ class PDFController extends Controller
         // $options->setIsRemoteEnabled(true);
 
 
+        // $options = new Options();
+        // $options->set('isPhpEnabled', true); // enable inline PHP code
+
         // // current stable
-        $html = view('header')->render();
+        $html = view('headerfloat')->render();
         $pdf = PDF::loadHtml($html);
-
-        // // addon part
-        // PDF::setOptions($options);
-        // $pdf = PDF::loadHtml($html);
-
         // // current stable part
         $pdf->setPaper('A4','portrait'); // setup the paper and orientation
-        $pdf->render(); // render the html as pdf
 
+
+        $pdf->render(); // render the html as pdf
         return $pdf->stream('preview.pdf'); // if want to output the generated pdf to browser (preview)
+
+        // return view('headerfloat');
+
+
+
+
+
+
         // return $pdf->download('download.pdf'); // if want to auto download the generated pdf
 
         // return view('float');
@@ -64,6 +71,7 @@ class PDFController extends Controller
             //   return view('inv3');
            //    return view('myPDF');
       
+           
 
     }
 }
