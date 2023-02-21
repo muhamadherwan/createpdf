@@ -21,6 +21,7 @@
             top: -100px;
             width: 100%;
             font-size: 12pt;
+            /* font-size: 11pt; */
         }
 
         /* header table */
@@ -38,14 +39,28 @@
         .header_logo {
             width:15%;
             padding-bottom: 20px;
-            background: palegreen;
+            /* vertical-align: top; */
+            /* background: palegreen; */
+        }
+
+        .logo {
+            /* width: 170px; */
+            /* height: 170px;  */
+            /* vertical-align: top; */
+            /* max-width: 100%; */
+            /* height: auto; */
+            width: 146px;
+            height: 135px;  
         }
 
         .header_company {
             width:30%;
             text-align: left;
             vertical-align: top;
+            padding-top: 10px;
+            padding-left: 10px; 
             padding-bottom: 20px;
+            font-size: 11pt;
             /* background: plum; */
         }
 
@@ -125,7 +140,10 @@
     <header>
         <table>
             <tr>
-              <td class='header_logo'>logo</td>
+              <td class='header_logo'>
+                {{-- <img src="{{ storage_path('app/public/images/3td_logo1.png') }}" class="logo"> --}}
+                <img src="{{ storage_path('app/public/images/3tds_logo_3.png') }}" class="logo">
+              </td>
               <td class='header_company'>
                 SA-10-06, PARAGON @ PAN'GAEA,<br>
                 Persiaran Bestari,<br>
