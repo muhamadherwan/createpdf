@@ -139,7 +139,7 @@ class PDFController extends Controller
     {
     
         $data = [
-            'title' => 'Dynamic Title.',
+            'title' => 'perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (lan)',
             'date' => date('m/d/Y'),
 //            'logo' => asset('storage/logo.png'),
         ];
@@ -149,7 +149,7 @@ class PDFController extends Controller
         
         // use if have data to pass to blade template
         // $pdf = Pdf::loadView('headerfloat', $data);
-        $pdf = Pdf::loadView('test', $data);
+        $pdf = Pdf::loadView('test2', $data);
         // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
         $pdf->setPaper('A4', 'potrait');
         
