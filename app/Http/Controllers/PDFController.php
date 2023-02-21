@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Spipu\Html2Pdf\Html2Pdf;
+use Barryvdh\DomPDF\Facade\Pdf;
+// use Dompdf\Options;
+use Dompdf\Dompdf; // this is same as use PDF
+// use PDF;
 use Illuminate\Http\Request;
-use PDF;
+
 
 class PDFController extends Controller
 {
@@ -27,19 +30,32 @@ class PDFController extends Controller
         // $options->setIsRemoteEnabled(true);
 
 
+        // $options = new Options();
+        // $options->set('isPhpEnabled', true); // enable inline PHP code
+
         // // current stable
-        $html = view('float')->render();
+        $html = view('headerfloat')->render();
         $pdf = PDF::loadHtml($html);
 
-        // // addon part
-        // PDF::setOptions($options);
-        // $pdf = PDF::loadHtml($html);
-
-        // // current stable part
+        
+        //// current stable part
         $pdf->setPaper('A4','portrait'); // setup the paper and orientation
-        $pdf->render(); // render the html as pdf
 
+
+        // set the margin-top for the content area
+        $pdf->setOptions(['margin-top' => '50mm']);
+
+        $pdf->render(); // render the html as pdf
         return $pdf->stream('preview.pdf'); // if want to output the generated pdf to browser (preview)
+
+        
+        // return view('headerfloat');
+
+
+
+
+
+
         // return $pdf->download('download.pdf'); // if want to auto download the generated pdf
 
         // return view('float');
@@ -64,6 +80,79 @@ class PDFController extends Controller
             //   return view('inv3');
            //    return view('myPDF');
       
-
+        
     }
+
+    public function generatePDF2()
+    {
+        // instance options
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true);
+        
+        // set other options, such as font path or margins
+        // $options->set([
+        //     'isPhpEnabled' => true,
+        //     'isRemoteEnabled' => true,
+        //     // 'fontDir' => '/path/to/fonts',
+        //     'margin-top' => '50mm',
+        //     'margin-bottom' => '50mm',    
+        // ]);
+
+        // $pdf->setOptions([
+        //     'isPhpEnabled' => true,
+        //     // 'fontDir' => '/path/to/fonts',
+        //     'margin-top' => '20mm',
+        //     'margin-bottom' => '20mm',
+        // ]);        
+
+        // create dompdf instance
+        // $pdf = new Dompdf();
+
+        // create dompdf instance with options
+        $pdf = new Dompdf($options);
+
+        // set paper size orientation
+        $pdf->setPaper('A4', 'potrait');
+        $pdf->setOptions(['margin-top' => '50mm']);
+
+        // set other options, such as font path or margins
+        // $pdf->setOptions([
+        //     'isPhpEnabled' => true,
+        //     // 'fontDir' => '/path/to/fonts',
+        //     'margin-top' => '20mm',
+        //     'margin-bottom' => '20mm',
+        // ]);
+        
+        // load the HTML content
+        $html = '
+        <h1>Hello shinoda!
+        <p>This is PDF generated with Laravel Dompdf.</p>
+        </h1>';
+        $pdf->loadHtml($html);
+
+        // render and output the PDF
+        $pdf->render();
+        return $pdf->stream('document.pdf');
+    }
+
+    public function generatePDF3()
+    {
+    
+        // set pdf option
+        Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        
+        // use if have data to pass to blade template
+        // $pdf = Pdf::loadView('headerfloat', $data);
+        $pdf = Pdf::loadView('test');
+        // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
+        $pdf->setPaper('A4', 'potrait');
+        
+        // download the template as pdf and set name as invoice
+        // return $pdf->download('invoice.pdf');
+
+        // stream the template as pdf in browser and set name as invoice
+        return $pdf->stream('invoice.pdf');
+        
+    }
+
 }

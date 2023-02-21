@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('pdf');
+
+Route::get('generate-pdf2', [PDFController::class, 'generatePDF2'])->name('pdf2');
+
+Route::get('generate-pdf3', [PDFController::class, 'generatePDF3'])->name('pdf3');
