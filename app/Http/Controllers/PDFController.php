@@ -33,13 +33,18 @@ class PDFController extends Controller
         // // current stable
         $html = view('headerfloat')->render();
         $pdf = PDF::loadHtml($html);
+
+        
         // // current stable part
         $pdf->setPaper('A4','portrait'); // setup the paper and orientation
 
+        // set the margin-top for the content area
+        $pdf->setOptions(['margin-top' => '50mm']);
 
         $pdf->render(); // render the html as pdf
         return $pdf->stream('preview.pdf'); // if want to output the generated pdf to browser (preview)
 
+        
         // return view('headerfloat');
 
 
