@@ -10,7 +10,8 @@
         
         /* set the page margin for pdf or print */
         @page {
-            margin: 150px 50px 80px 50px; 
+            /* margin: 150px 50px 80px 50px; */
+            margin: 150px 50px 100px 50px; 
         }
 
         header {
@@ -26,7 +27,11 @@
             position: fixed;
             bottom: -50px;
             height: 30px;
-            background-color: #333399;
+            /* background-color: #333399; */
+        }
+
+        footer .page-number {
+           background: blue;     
         }
 
         body {
@@ -41,7 +46,6 @@
         .page-break {
             page-break-after: always;
         }
-
 
     </style>
 
@@ -95,9 +99,13 @@
         </table>
     </header>
 
+    <footer>
+        <div class="page-number">this is footer</div>
+    </footer>
+
     <main>
         <div id="contents">
-        <h1>Page 1</h1>
+        <h1>This is Page 1 with long contents.</h1>
         <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores cupiditate est modi aut atque maxime. Aspernatur, sapiente placeat libero aperiam ab facilis tempore ad porro id quo laudantium a rem voluptas explicabo voluptate, ratione cumque perspiciatis odit eveniet eaque ipsam sed obcaecati quasi et! Reprehenderit ullam consequuntur eveniet, sint minima optio expedita fuga sapiente exercitationem nam repellendus tempore cum consequatur itaque vitae esse totam eos praesentium labore quaerat vero accusamus sequi. Voluptates fugit dignissimos necessitatibus tenetur? Debitis facilis praesentium, temporibus rem delectus maiores? Voluptates velit necessitatibus quisquam, quo cupiditate eum assumenda voluptatem sed quos provident et quibusdam fugit dolorum fugiat? Quaerat maiores alias, asperiores eum obcaecati optio voluptates corporis accusamus. Illum aut ullam quasi earum consequuntur ratione dicta alias excepturi magnam sed, voluptatibus ut eius rerum aperiam ipsa inventore tenetur unde sunt assumenda laborum amet. Animi ipsa placeat, necessitatibus esse odit quia vel dolorum, repudiandae veritatis quidem numquam aliquam dicta non sequi illo ea beatae aspernatur saepe! Dicta autem dolore deserunt molestiae, commodi in incidunt, amet excepturi, similique quis cum aliquam magnam nisi dolor ut provident impedit nam esse nobis repudiandae enim tempora ipsa? Omnis at fugiat rem inventore repellat nihil eligendi, ea impedit suscipit dolor blanditiis nobis repudiandae et eveniet dolorem aut doloribus! Libero, officiis voluptates? Maiores ut placeat, fugiat ratione suscipit quod. Nisi sit accusamus minus ducimus doloremque dicta, vitae fuga, optio quasi iusto corrupti libero velit at! Accusantium rem veritatis nobis similique libero aliquid, consequatur veniam earum modi officiis, deserunt alias nam cum eligendi eaque quas? Iste atque perspiciatis iure, ut ea delectus nemo cum quas quaerat labore ducimus quod voluptates minima repellat vitae, optio molestias quidem ad quia facere. Ratione, porro beatae ut pariatur eius inventore vitae! Atque cumque veritatis iusto at beatae nemo sed, mollitia repellendus praesentium cum aspernatur voluptates? Sint temporibus sunt libero eum illo omnis expedita labore mollitia explicabo. Temporibus, facere illum. Quas reprehenderit non voluptates incidunt quaerat quasi at eos alias veritatis, ut nihil dolore temporibus laboriosam quis, tempore voluptas ducimus nostrum perspiciatis recusandae cum deserunt nam debitis magni id. Quam fugiat vel voluptatem fugit cumque amet eos dolores harum ratione cum! Minus laudantium beatae obcaecati, praesentium amet nesciunt consequuntur quibusdam, voluptates ipsum debitis, molestiae aliquid ullam tempora iste nisi adipisci eaque dolore error corrupti sed dolor placeat est. Impedit optio repellendus quo a, eius aperiam porro adipisci sint ea, hic ipsa dolor eligendi vitae veniam quibusdam aliquam tenetur nostrum! Cum aut laboriosam officia, odit a enim natus porro praesentium cupiditate delectus optio dolores aliquam, ipsum, et facere iusto? Amet et soluta facere in iusto minima, cupiditate provident temporibus quibusdam harum, repudiandae repellat. Facilis consequuntur sint, vel soluta a aliquid odio doloremque explicabo distinctio deleniti provident tenetur nobis! Voluptas, error culpa. Laboriosam placeat dicta optio ex perspiciatis molestias inventore quo eius tempora nam consectetur incidunt aliquam neque maxime odit totam laborum obcaecati eos, expedita quis nihil? Et dicta perferendis veniam totam quisquam culpa, modi tempora repellat. Beatae quia vero numquam, quidem autem voluptatum maxime molestiae pariatur esse debitis optio, maiores odio dignissimos!
         </p>
@@ -109,9 +117,10 @@
         <div class="page-break"></div>
 
         <div id="contents">
-            <h1>Page 2</h1>
-        </div> 
+            <h1>This Page 2</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta perspiciatis error minus voluptatem possimus reprehenderit nihil modi dolor aspernatur reiciendis?</p>
+        </div>
     </main>
-    
+
 </body>
 </html>
