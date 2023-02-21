@@ -14,15 +14,84 @@
             margin: 150px 50px 100px 50px; 
         }
 
+        /* header section */
         header {
             /* no need to set height */
             position: fixed;
             top: -100px;
             width: 100%;
-            border: solid 1px black;
-            /* background: green; */
+            font-size: 12pt;
         }
 
+        /* header table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            /* background: #f6f8ff; */
+        }
+
+        td {
+            /* padding: 16px; */
+            /* border:1px solid #777; */
+        }
+
+        .header_logo {
+            width:15%;
+            padding-bottom: 20px;
+            background: palegreen;
+        }
+
+        .header_company {
+            width:30%;
+            text-align: left;
+            vertical-align: top;
+            padding-bottom: 20px;
+            /* background: plum; */
+        }
+
+        .header_title {
+            width:25%;
+            text-align: right;
+            vertical-align: bottom;
+            font-weight: 900;
+            text-decoration: underline;
+            /* font-size: 18pt; */
+            font-size: 25pt;
+            padding-bottom: 20px;
+            /* background: peachpuff; */
+        }
+
+        .header_billing {
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .header_info  {
+            vertical-align: top;
+        }
+
+        .header_info_label {
+            vertical-align: top;
+            text-align: right;
+            padding-left:14px;
+        }
+
+        .header_info_data {
+            vertical-align: top;
+            text-align: left;
+            padding-left:10px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .underline {
+            border-bottom: 1pt solid #000;
+            width: 65%;
+        }
+
+        /* footer section */
         footer {
             position: fixed;
             bottom: -50px;
@@ -47,6 +116,7 @@
             page-break-after: always;
         }
 
+    
     </style>
 
 </head>
@@ -55,48 +125,51 @@
     <header>
         <table>
             <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
+              <td class='header_logo'>logo</td>
+              <td class='header_company'>
+                SA-10-06, PARAGON @ PAN'GAEA,<br>
+                Persiaran Bestari,<br>
+                63000,Cyberjaya, Selangor.<br>
+                Business Registration No:&nbsp;1182596-P<br>
+                Phone :&nbsp;03-8685 0465<br>
+                Email :&nbsp;sales@3tds.com.my<br>
+                Website :&nbsp;www.3tds.com.my<br>
+            </td>
+            <td class='header_title'>TAX INVOICE</td>
             </tr>
             <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
+              <td class='header_billing' colspan='2'>
+                <span class="bold">Billing Address:</span><br>
+                <div class="underline bold">Lembaga Peperiksaan</div>
+                <div class="underline">Jln Tunku Abdul Halim,</div>
+                <div class="underline">Kompleks Kerajaan, 540480 Kuala Lumpur,</div>
+                <div class="underline">Wilayah Persekutuan Kuala Lumpur</div>
+              </td>
+              <td class='header_info'>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="header_info_label">Invoice No :</div>
+                            <div class="header_info_label">P.O No :</div>
+                            <div class="header_info_label">Date :</div>
+                            <div class="header_info_label">Due :</div>
+                            <div class="header_info_label">SST :</div>
+                            <div class="header_info_label">Page :</div>
+                        </td>
+                        <td>
+                            <div class="header_info_data">INV-230101-001</div>
+                            <div class="header_info_data">PO-200101-001</div>
+                            <div class="header_info_data">13-02-2023</div>
+                            <div class="header_info_data">30 Days</div>
+                            <div class="header_info_data">W24-2010-32000007</div>
+                            <div class="header_info_data">1 of 1</div>
+                          </td>        
+                    </tr>
+                </table>
+              </td>
+              
             </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-            <tr>
-                <td>header1</td><td>header2</td><td>header3</td>
-            </tr>
-        </table>
+          </table>
     </header>
 
     <footer>
