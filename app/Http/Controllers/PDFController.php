@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Dompdf\Options;
+use Dompdf\Dompdf; // this is same as use PDF
 use PDF;
 use Illuminate\Http\Request;
 
@@ -35,8 +37,9 @@ class PDFController extends Controller
         $pdf = PDF::loadHtml($html);
 
         
-        // // current stable part
+        //// current stable part
         $pdf->setPaper('A4','portrait'); // setup the paper and orientation
+
 
         // set the margin-top for the content area
         $pdf->setOptions(['margin-top' => '50mm']);
@@ -76,7 +79,59 @@ class PDFController extends Controller
             //   return view('inv3');
            //    return view('myPDF');
       
-           
-
+        
     }
+
+    public function generatePDF2()
+    {
+        // instance options
+        // $options = new Options();
+        // $options->set('isRemoteEnabled', true);
+        
+        // set other options, such as font path or margins
+        // $options->set([
+        //     'isPhpEnabled' => true,
+        //     'isRemoteEnabled' => true,
+        //     // 'fontDir' => '/path/to/fonts',
+        //     'margin-top' => '50mm',
+        //     'margin-bottom' => '50mm',    
+        // ]);
+
+        // $pdf->setOptions([
+        //     'isPhpEnabled' => true,
+        //     // 'fontDir' => '/path/to/fonts',
+        //     'margin-top' => '20mm',
+        //     'margin-bottom' => '20mm',
+        // ]);        
+
+        // create dompdf instance
+        // $pdf = new Dompdf();
+
+        // create dompdf instance with options
+        $pdf = new Dompdf($options);
+
+        // set paper size orientation
+        $pdf->setPaper('A4', 'potrait');
+        $pdf->setOptions(['margin-top' => '50mm']);
+
+        // set other options, such as font path or margins
+        // $pdf->setOptions([
+        //     'isPhpEnabled' => true,
+        //     // 'fontDir' => '/path/to/fonts',
+        //     'margin-top' => '20mm',
+        //     'margin-bottom' => '20mm',
+        // ]);
+        
+        // load the HTML content
+        $html = '
+        <h1>Hello shinoda!
+        <p>This is PDF generated with Laravel Dompdf.</p>
+        </h1>';
+        $pdf->loadHtml($html);
+
+        // render and output the PDF
+        $pdf->render();
+        return $pdf->stream('document.pdf');
+    }
+
 }
