@@ -16,11 +16,19 @@
 
             header {
                 position: fixed; /* this the part that make header at top every page */
-                top: -60px;
+                /* top: -60px; */
                 /* set the header start and end padding */
                 left: 0px;
                 right: 0px;
-                height: 50px; /* set the header height. will overlap the content. need to find way to work on this */
+                /* set the header height. will overlap the content. need to find way to work on this */
+                /* height: 50px;  */
+                
+                top: -115px;
+                width: 100%;
+                height: 109px;
+                
+                
+                
                 font-size: 20px !important;
 
                 /** Extra personal styles **/

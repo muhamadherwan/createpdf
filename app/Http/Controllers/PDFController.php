@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Dompdf\Options;
+use Barryvdh\DomPDF\Facade\Pdf;
+// use Dompdf\Options;
 use Dompdf\Dompdf; // this is same as use PDF
-use PDF;
+// use PDF;
 use Illuminate\Http\Request;
 
 
@@ -132,6 +133,26 @@ class PDFController extends Controller
         // render and output the PDF
         $pdf->render();
         return $pdf->stream('document.pdf');
+    }
+
+    public function generatePDF3()
+    {
+    
+        // set pdf option
+        Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        
+        // use if have data to pass to blade template
+        // $pdf = Pdf::loadView('headerfloat', $data);
+        $pdf = Pdf::loadView('test');
+        // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
+        $pdf->setPaper('A4', 'potrait');
+        
+        // download the template as pdf and set name as invoice
+        // return $pdf->download('invoice.pdf');
+
+        // stream the template as pdf in browser and set name as invoice
+        return $pdf->stream('invoice.pdf');
+        
     }
 
 }
