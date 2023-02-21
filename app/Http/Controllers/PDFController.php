@@ -125,7 +125,7 @@ class PDFController extends Controller
         
         // load the HTML content
         $html = '
-        <h1>Hello shinoda!
+        <h1>Hello world
         <p>This is PDF generated with Laravel Dompdf.</p>
         </h1>';
         $pdf->loadHtml($html);
@@ -138,12 +138,18 @@ class PDFController extends Controller
     public function generatePDF3()
     {
     
+        $data = [
+            'title' => 'Dynamic Title.',
+            'date' => date('m/d/Y'),
+//            'logo' => asset('storage/logo.png'),
+        ];
+
         // set pdf option
         Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         
         // use if have data to pass to blade template
         // $pdf = Pdf::loadView('headerfloat', $data);
-        $pdf = Pdf::loadView('test');
+        $pdf = Pdf::loadView('test', $data);
         // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
         $pdf->setPaper('A4', 'potrait');
         
