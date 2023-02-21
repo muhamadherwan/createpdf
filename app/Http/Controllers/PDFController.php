@@ -145,7 +145,10 @@ class PDFController extends Controller
         ];
 
         // set pdf option
-        Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+
+        Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true]);
+        
         
         // use if have data to pass to blade template
         // $pdf = Pdf::loadView('headerfloat', $data);
