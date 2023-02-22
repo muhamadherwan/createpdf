@@ -1,67 +1,345 @@
+{{-- @php
+    // $items = [1,2,3,4,5];
+    $items = [1,2];
+@endphp --}}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>"Kaffeefahrten" in Bornheim: hart durchgreifen, Senioren vor Betrügern schützen</title>
-  <style>
-  @page {
-    margin: 120px 50px 80px 50px;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ $title }}</title>
 
-  #header {
-    position: fixed;
-    top: -115px;
-    width: 100%;
-    height: 109px;
-    background: #aaa url("path/to/logo.png") no-repeat right;
-  }
+    <style>
+        
+        /* set the page margin for pdf or print */
+        @page {
+            /* margin: 150px 50px 80px 50px; */
+            margin: 150px 50px 100px 50px; 
+        }
 
-  #content {
-    background-color: #d1d977;
-  }
+        /* header section */
+        header {
+            /* no need to set height */
+            position: fixed;
+            top: -100px;
+            width: 100%;
+            /* font-size: 12pt; */
+            /* font-size: 11pt; */
+            font: 11pt Georgia, "Times New Roman", Times, serif;
+            /* line-height: 1.3; */
+            background: #fff !important;
+            color: #000;
+        }
 
-  footer {
-    position: fixed;
-    bottom: -65px;
-    height: 30px;
-    background-color: #333399;
-  }
+        /* header table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            /* background: #f6f8ff; */
+        }
 
-  footer .page-number {
-    text-align: center;
-  }
+        td {
+            /* padding: 16px; */
+            /* border:1px solid #777; */
+        }
 
-  .page-number:before {
-    content: "Seite " counter(page);
-  }
+        .header_logo {
+            width:15%;
+            padding-bottom: 20px;
+            /* background: palegreen; */
+        }
 
-  br[style] {
-    display:none;
-  }
-  </style>
+        .logo {
+            width: 167px;
+            height: 135px;  
+        }
+
+        .header_company {
+            width:30%;
+            text-align: left;
+            vertical-align: top;
+            padding-top: 10px;
+            padding-left: 10px; 
+            padding-bottom: 20px;
+            font-size: 11pt;
+            /* background: plum; */
+        }
+
+        .header_title {
+            width:25%;
+            text-align: right;
+            vertical-align: bottom;
+            font-weight: 900;
+            text-decoration: underline;
+            /* font-size: 18pt; */
+            font-size: 25pt;
+            padding-bottom: 20px;
+            /* background: peachpuff; */
+            font: Georgia, "Times New Roman", Times, serif;
+        }
+
+        .header2 {
+            border-collapse: collapse;
+            width: 100%;
+            /* background: #f6f8ff; */
+            /* border: solid 1px #000; */
+        }
+
+        .header_billing {
+            text-align: left;
+            vertical-align: top;
+            /* border: solid 1px #000; */
+            width: 100%;
+            /* background: red; */
+        }
+
+        .header_info  {
+            vertical-align: top;
+            width: 34%; 
+        }
+
+        .header_info_label {
+            vertical-align: top;
+            text-align: right;
+            /* padding-left:14px; */
+        }
+
+        .header_info_data {
+            vertical-align: top;
+            text-align: left;
+            padding-left:10px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .underline {
+            border-bottom: 1pt solid #000;
+            width: 65%;
+        }
+
+        /* footer section */
+        footer {
+            position: fixed;
+            bottom: -50px;
+            height: 30px;
+            /* background-color: #333399; */
+        }
+
+        footer .page-number {
+           background: blue;     
+        }
+
+        /* main section */
+        body {
+            /* for set the margin(space break) from header and content  */
+            /* margin-top: 250px; */
+            margin-top: 210px;
+            font: 12pt Georgia, "Times New Roman", Times, serif;
+            line-height: 1.3;
+            background: #fff !important;
+            color: #000;
+        }
+
+        .subject_label {
+            font-weight: bold;
+            vertical-align: top;
+            padding-bottom: 10px;
+        }
+
+        .subject_data {
+            text-transform: uppercase;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+
+        .items_section {
+            /* height: 30%;
+            background: rgb(245, 218, 210); */
+        }
+
+        /* items table section */
+        table.tb { 
+            width:100%; 
+            border-collapse: collapse; 
+        }
+
+        .tb th, .tb td {
+            border: solid 1px #000;
+            padding: 5px;
+            font-weight: unset;  
+        }
+        
+        .tb th { 
+            text-align:left;
+         }
+
+        .tcell {
+             /* background: #f6f8ff;  */
+        }
+
+        #contents {
+
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .breakNow {
+            page-break-inside:avoid;
+            page-break-after:always;
+         }
+
+    
+    </style>
+
 </head>
 <body>
-  <div id="header">
-    {{-- <h2>ANTRAG</h2> --}}
-    <table>
-        <tr><td>afsd</td></tr>
-        <tr><td>afsd</td></tr>
-        <tr><td>afsd</td></tr>
-        <tr><td>afsd</td></tr>
-        <tr><td>afsd</td></tr>
-        <tr><td>afsd</td></tr>
-    </table>
-  </div>
 
-  <footer>
-    <div class="page-number"></div>
-  </footer>
+    <header>
+        <table>
+            <tr>
+              <td class='header_logo'>
+                <img src="{{ storage_path('app/public/images/3tds_logo_3.png') }}" class="logo">
+              </td>
+              <td class='header_company'>
+                <div class="">SA-10-06, PARAGON @ PAN'GAEA,</div>
+                <div class="">Persiaran Bestari,</div>
+                <div class="">63000,Cyberjaya, Selangor.</div>
+                <div class="">Business Registration No:&nbsp;1182596-P</div>
+                <div class="">Phone :&nbsp;03-8685 0465</div>
+                <div class="">Email :&nbsp;sales@3tds.com.my</div>
+                <div class="">Website :&nbsp;www.3tds.com.my</div>
+            </td>
+            <td class='header_title'>TAX INVOICE</td>
+            </tr>
+          </table>
 
-  {{-- <h1>content</h1> --}}
+          <table class="header2">
+             <tr>
+                <td class='header_billing' colspan='2'>
+                <span class="bold">Billing Address:</span><br>
+                <div class="underline bold">Lembaga Peperiksaan</div>
+                <div class="underline">Jln Tunku Abdul Halim,</div>
+                <div class="underline">Kompleks Kerajaan, 540480 Kuala Lumpur,</div>
+                <div class="underline">Wilayah Persekutuan Kuala Lumpur</div>
+              </td>
+              <td class='header_info'>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="header_info_label">Invoice No :</div>
+                            <div class="header_info_label">P.O No :</div>
+                            <div class="header_info_label">Date :</div>
+                            <div class="header_info_label">Due :</div>
+                            <div class="header_info_label">SST :</div>
+                            <div class="header_info_label">Page :</div>
+                        </td>
+                        <td>
+                            <div class="header_info_data">INV-230101-001</div>
+                            <div class="header_info_data">PO-200101-001</div>
+                            <div class="header_info_data">13-02-2023</div>
+                            <div class="header_info_data">30 Days</div>
+                            <div class="header_info_data">W24-2010-32000007</div>
+                            <div class="header_info_data">1 of 1</div>
+                            {{-- <div class="header_info_data">{PAGE_NUM} of {PAGE_COUNT}</div> --}}
+                          </td>        
+                    </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+    </header>
 
-  <div id="content">
-    <h1>content</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui laborum autem, consequuntur cum doloribus nisi expedita deleniti, odio enim commodi vero? Debitis id accusamus quam blanditiis dignissimos exercitationem, ducimus eum dolorem ab, nihil est numquam alias molestiae ipsam natus expedita asperiores voluptates dolorum enim? Reiciendis in corporis, accusantium voluptates et vero nesciunt earum dolorum quia aliquam inventore facilis quisquam minima! Veniam perferendis laborum optio totam veritatis, non placeat animi odio delectus, cupiditate pariatur libero inventore cumque sapiente recusandae suscipit unde consequatur possimus, asperiores vero. Natus recusandae aspernatur placeat velit, eaque nemo sit fuga! Ab tempora aperiam fuga soluta praesentium iusto earum qui sit accusamus eum ex, magnam laborum dolorum porro et distinctio, quasi veniam est sapiente repellat corrupti? Sint, cumque maxime. Officia, eveniet distinctio. Illo architecto harum, est dolorem eius praesentium excepturi optio eveniet placeat reprehenderit omnis facilis quod perspiciatis libero consectetur nihil fuga laboriosam voluptatibus accusamus perferendis! Vel officia neque perspiciatis hic vero laboriosam culpa soluta voluptas a velit veritatis impedit, dignissimos animi in iure qui quasi ad. Asperiores reprehenderit eligendi magnam? Quasi, vitae! Enim illum quos nulla repellat praesentium consectetur neque corporis vero quasi quidem quo dicta, omnis delectus exercitationem dolorum harum quisquam quibusdam ipsa tenetur nobis aliquam soluta sit consequatur ad? Quae, officia? Nemo assumenda officia porro odio? Totam doloribus cumque possimus repellendus error ad debitis commodi corrupti quam tenetur natus amet tempora, animi suscipit dolorem et impedit deserunt placeat mollitia eos! Praesentium ipsam pariatur ex beatae saepe fuga corrupti ullam, quasi temporibus vitae. Sed recusandae mollitia unde iure repellat dolore, architecto totam eaque esse temporibus cumque iusto consectetur nobis magni id reiciendis est tempore rem! Sint exercitationem, praesentium veniam voluptatum est omnis, voluptates cumque amet aliquid expedita eos asperiores, numquam consequuntur provident libero at quaerat quisquam ducimus sunt accusantium ea! Quis asperiores ullam error obcaecati, modi itaque ea laborum, officiis vel tempora maiores enim! Unde id maiores nihil illum labore obcaecati odio molestiae repudiandae, quae ullam consectetur reiciendis voluptas qui est saepe laborum cupiditate quas exercitationem sint assumenda eius. Ullam, hic dolorem enim dolorum suscipit non commodi! Ducimus ex iure reprehenderit magnam at placeat alias ad iusto delectus corrupti, dignissimos quae deleniti itaque ratione modi culpa distinctio aliquid consequuntur voluptatum consequatur dolor quas quam impedit omnis! Quos provident aspernatur nihil assumenda sequi, perspiciatis nam veniam reiciendis ut error quam laudantium quo rem possimus beatae maiores laboriosam recusandae alias cum. Optio laboriosam ut eaque accusamus excepturi eveniet, culpa voluptate numquam expedita pariatur vero blanditiis delectus quidem atque reprehenderit esse molestias itaque deleniti. Non, dolorum aliquam voluptas ratione quaerat aliquid asperiores sit eligendi quas libero nostrum itaque in animi exercitationem tenetur quidem. Quam nulla accusamus veritatis dicta quasi, est voluptatum laborum? Officiis distinctio perspiciatis in earum minus quo, consequuntur, mollitia, quos quibusdam deserunt id beatae? Nostrum nobis, minus quisquam minima reprehenderit asperiores ipsum qui incidunt vero. Iusto eveniet autem voluptatibus in sint ab veritatis sunt quo aliquam quas. Iure facere odio odit atque sequi commodi, ducimus totam. Ratione ducimus, itaque doloribus minus laudantium eius fugit? Accusantium, exercitationem adipisci. Ab, iure aspernatur. Sequi veritatis impedit accusantium dolor. Illum, blanditiis maiores officiis similique eveniet a molestiae minus quo fugiat impedit reiciendis animi accusantium cumque facere rem sed aliquid quaerat perspiciatis numquam aut error nulla excepturi veritatis molestias? Alias vero beatae magnam voluptas facilis fugit ducimus sint, fuga rerum. Quis ut repudiandae, incidunt, ducimus in qui fuga aut asperiores delectus possimus officiis! Corporis placeat minus, expedita alias saepe officia repellendus perferendis deleniti illum, soluta illo, cumque non sequi tempora quis. Libero, sequi possimus fugit obcaecati totam assumenda quibusdam amet itaque natus explicabo aliquam culpa rerum dolore et laboriosam ipsum ipsam temporibus eligendi sed fuga reiciendis consequuntur. Magnam nam nesciunt perspiciatis incidunt ab. Expedita facere aperiam provident quidem dolore voluptatum deserunt optio facilis quisquam! Obcaecati aut vel sint odio eaque in deserunt doloribus et, inventore, facere illo beatae optio eum magnam quae, reprehenderit sequi laudantium! Sit cum facere autem optio omnis corrupti repellat aspernatur nihil nostrum, minima, at voluptatibus sapiente vitae consequatur accusantium ad dolorem facilis suscipit culpa dolore. Modi a in cupiditate, dolores alias sapiente sequi libero laboriosam ducimus culpa pariatur perspiciatis? Dignissimos aperiam asperiores error fugit dolorum pariatur ipsum. Hic minus aperiam ipsa unde blanditiis! Tempore amet officia praesentium aliquid.</p>
-  </div>
+    <footer>
+        <div class="page-number">this is footer</div>
+    </footer>
+
+    <main>
+        <div id="contents">
+        
+            <table>
+                <tr>
+                    <td class="subject_label">Subject:</td>
+                    <td class="subject_data">&nbsp;{{ $title }}</td>
+                </tr>
+            </table>
+            {{-- <div class="bold">Subject:&nbsp;<span class="subject">{{ $title }}</span></div> --}}
+
+            <div class="items_section">
+
+
+            @php
+                // $items = [1];
+                // $items = [1,2];
+                // $items = [1,2,3];
+                $items = [1,2,3,4];
+                // $items = [1,2,3,4,5];
+                // $items = [1,2,3,4,5,6];
+            @endphp
+
+            {{-- start items section --}}
+            <table class="tb">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price (RM)</th>
+                        <th>SST 6%</th>
+                        <th>Total Amount (RM)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 0;
+                        $max = 3;
+                    @endphp
+
+                    @foreach ($items as $key=> $item)
+                    {{-- @if($no >= $max) --}}
+                    @if($no > $max)
+                        @php ( $no = 0)
+                        <table class="tb"><tbody>
+                    @endif
+                    
+                    <tr>
+                        <td>{{ $key+1 }}</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+
+                    @php( $no +=1 )
+
+                    {{-- @if($no >= $max) --}}
+                    @if($no > $max)
+                    </tbody>
+                        </table>
+                        <div class="page-break"></div>
+                    @endif
+                    @endforeach        
+                </tbody>
+            </table>
+
+            {{-- end items section --}}
+
+            </div>
+            <br/><br/><br/><br/><br/>
+            <div class="signature_section">
+                <p>this is signature section</p>
+            </div>
+        
+        
+        </div> {{-- end content div --}}
+        
+    </main>
+
 </body>
 </html>
