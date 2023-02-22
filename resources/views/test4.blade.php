@@ -125,12 +125,22 @@
         footer {
             position: fixed;
             bottom: -50px;
-            height: 30px;
-            /* background-color: #333399; */
+            width: 100%;
+            font: 11pt Georgia, "Times New Roman", Times, serif;
+            background: #fff !important;
+            color: #000;
+            border-top: 1px solid #000;
+            /* background: #f6f8ff; */
         }
 
-        footer .page-number {
-           background: blue;     
+        footer .payment { 
+           font: 12pt Georgia, "Times New Roman", Times, serif;
+           font-weight: bold;
+           padding-top: 3px;
+        }
+
+        ol {
+            padding-left: 20px;
         }
 
         /* main section */
@@ -188,11 +198,6 @@
         .page-break {
             page-break-after: always;
         }
-
-        .breakNow {
-            page-break-inside:avoid;
-            page-break-after:always;
-         }
 
          .grandtotal{
             padding-bottom:500px;
@@ -260,7 +265,22 @@
     </header>
 
     <footer>
-        <div class="page-number">this is footer</div>
+        <div class="tnc">
+            Terms and Condition:
+            <ol type="a">
+                <li>Goods sold are not returnable or refundable. Otherwise a cancellation fee of 30% on <br>purchase price will be imposed.</li>
+                <li>Interest of 2% per month will be added to overdue accounts.</li>
+                <li>All TT charges incur within customers countries will be bored by applicant.</li>
+                <li>Goods sold or delivered are not returnable or exchangeable.</li>
+              </ol>
+
+            <div class="payment">
+                <span class="underline">Payment Informations:</span>
+            </div>    
+            <div class="payment">ACCOUNT HOLDER: "3TD SOLUTIONS SDN BHD"</div>
+            <div class="payment">CIMB BANK: 8602538985</div>  
+        </div>
+        
     </footer>
 
     <main>
@@ -271,11 +291,11 @@
                 $items = [1, 2];
                 $items = [1, 2, 3];
                 $items = [1, 2, 3, 4];
-                $items = [1, 2, 3, 4, 5];
-                $items = [1, 2, 3, 4, 5, 6];
-                $items = [1, 2, 3, 4, 5, 6, 7];
-                $items = [1, 2, 3, 4, 5, 6, 7, 8];
-                $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                // $items = [1, 2, 3, 4, 5];
+                // $items = [1, 2, 3, 4, 5, 6];
+                // $items = [1, 2, 3, 4, 5, 6, 7];
+                // $items = [1, 2, 3, 4, 5, 6, 7, 8];
+                // $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
                 // set row limit
                 $limit = 3;
