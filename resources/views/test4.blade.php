@@ -194,6 +194,10 @@
             page-break-after:always;
          }
 
+         .grandtotal{
+            padding-bottom:500px;
+         }
+
     
     </style>
 
@@ -262,64 +266,47 @@
     <main>
         <div id="contents">
         
-            <table>
-                <tr>
-                    <td class="subject_label">Subject:</td>
-                    <td class="subject_data">&nbsp;{{ $title }}</td>
-                </tr>
-            </table>
-            {{-- <div class="bold">Subject:&nbsp;<span class="subject">{{ $title }}</span></div> --}}
+            @php
+                $items = [1];
+                $items = [1, 2];
+                $items = [1, 2, 3];
+                $items = [1, 2, 3, 4];
+                $items = [1, 2, 3, 4, 5];
+                $items = [1, 2, 3, 4, 5, 6];
+                $items = [1, 2, 3, 4, 5, 6, 7];
+                $items = [1, 2, 3, 4, 5, 6, 7, 8];
+                $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-            <div class="items_section">
-            {{-- start items section --}}
-            <table class="tb">
-                <tr>
-                    <th>No</th>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Unit Price (RM)</th>
-                    <th>SST 6%</th>
-                    <th>Total Amount (RM)</th>
-                </tr>
+                // set row limit
+                $limit = 3;
+            @endphp
 
-                @php
-                    $n = 1;
-                    $items = [1];
-                    $items = [1,2];
-                    $items = [1,2,3];
-                    // $items = [1,2,3,4,5];
-                @endphp
+            @php $check=0 @endphp
+            
+            @foreach($items as $key=> $item)
 
-                @foreach ($items as $key=> $item)
-                    <tr>
-                        <td class="tcell">{{ $key + 1 }}</td>
-                        <td class="tcell">desc</td>
-                        <td class="tcell">three</td>
-                        <td class="tcell">four</td>
-                        <td class="tcell">five</td>
-                        <td class="tcell">{{ $key }}</td>
-                    </tr>
-                    <?php $n++ ?>
+                @php $check++ @endphp
 
-                    
-                    @if ( $n % 3 == 0 )
-                        <div style="page-break-before:always"></div>
-                        
-                        
-                        {{-- <div style="page-break-inside:avoid; page-break-before:always"> </div> --}}
-                        {{-- <div class="breakNow"></div> --}}
-                            {{-- <div class="page-break"></div> --}}
-                    @endif
-                    
-                @endforeach      
-            </table>
-            {{-- end items section --}}
-            </div>
-            <br/><br/><br/><br/><br/>
-            <div class="signature_section">
-                <p>this is signature section</p>
-            </div>
-        
+                @if( $check % $limit == 0 ) 
+                    @php echo '<div class="page-break"></div>'; @endphp 
+                @endif
+                <!-- your code or something like divs -->
+                <div class="">{{ $key+1 }}&nbsp;{{ $check }}</div>    
+
+                {{-- if check row have been iterated equal to limit value, break to new page. --}}
+                {{-- @if( $check % 5 == 0 )  --}}
+                {{-- @if( $check % $limit == 0 ) 
+                    @php echo '<div class="page-break"></div>'; @endphp 
+                @endif --}}
+            
+             @endforeach
+
+             <div class="underline"></div>
+             <div class="">total</div>
+             <div class="">sst</div>
+             <div class="grandtotal">grand total</div>
+            
+             <div class="">sign</div>
         
         </div> {{-- end content div --}}
         
