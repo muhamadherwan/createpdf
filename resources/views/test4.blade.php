@@ -194,6 +194,10 @@
             page-break-after:always;
          }
 
+         .grandtotal{
+            padding-bottom:500px;
+         }
+
     
     </style>
 
@@ -262,90 +266,47 @@
     <main>
         <div id="contents">
         
-            <table>
-                <tr>
-                    <td class="subject_label">Subject:</td>
-                    <td class="subject_data">&nbsp;{{ $title }}</td>
-                </tr>
-            </table>
-            {{-- <div class="bold">Subject:&nbsp;<span class="subject">{{ $title }}</span></div> --}}
-
-            <div class="items_section">
-
-
             @php
                 $items = [1];
-                $items = [1,2];
-                $items = [1,2,3];
-                $items = [1,2,3,4];
-                // $items = [1,2,3,4,5];
-                // $items = [1,2,3,4,5,6];
+                $items = [1, 2];
+                $items = [1, 2, 3];
+                $items = [1, 2, 3, 4];
+                $items = [1, 2, 3, 4, 5];
+                $items = [1, 2, 3, 4, 5, 6];
+                $items = [1, 2, 3, 4, 5, 6, 7];
+                $items = [1, 2, 3, 4, 5, 6, 7, 8];
+                $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+                // set row limit
+                $limit = 3;
             @endphp
 
-            {{-- start items section --}}
-            <table class="tb">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>Unit Price (RM)</th>
-                        <th>SST 6%</th>
-                        <th>Total Amount (RM)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $no = 0;
-                        $max = 3;
-                    @endphp
+            @php $check=0 @endphp
+            
+            @foreach($items as $key=> $item)
 
-                    @foreach ($items as $key=> $item)
-                        @if ( $no >= $max )
-                            @php( $no = 0)
-                                <table class="tb">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Description</th>
-                                            <th>Quantity</th>
-                                            <th>Unit Price (RM)</th>
-                                            <th>SST 6%</th>
-                                            <th>Total Amount (RM)</th>
-                                        </tr>
-                                    </thead><tbody>
-                        @endif
-                        
-                        <tr>
-                            <td>{{ $key +1 }}</td>
-                            <td>{{ $no }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                @php $check++ @endphp
 
+                @if( $check % $limit == 0 ) 
+                    @php echo '<div class="page-break"></div>'; @endphp 
+                @endif
+                <!-- your code or something like divs -->
+                <div class="">{{ $key+1 }}&nbsp;{{ $check }}</div>    
 
-                    
-                        @php($no +=1)
+                {{-- if check row have been iterated equal to limit value, break to new page. --}}
+                {{-- @if( $check % 5 == 0 )  --}}
+                {{-- @if( $check % $limit == 0 ) 
+                    @php echo '<div class="page-break"></div>'; @endphp 
+                @endif --}}
+            
+             @endforeach
 
-                        @if ( $no >= $max )
-                            </tbody></table>
-                            <div class="page-break"></div>
-                        @endif
-                        
-                    @endforeach      
-                </tbody></table>
-
-
-            {{-- end items section --}}
-
-            </div>
-            {{-- <br/><br/><br/><br/><br/>
-            <div class="signature_section">
-                <p>this is signature section</p>
-            </div> --}}
-        
+             <div class="underline"></div>
+             <div class="">total</div>
+             <div class="">sst</div>
+             <div class="grandtotal">grand total</div>
+            
+             <div class="">sign</div>
         
         </div> {{-- end content div --}}
         

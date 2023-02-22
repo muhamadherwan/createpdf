@@ -152,7 +152,7 @@ class PDFController extends Controller
         
         // use if have data to pass to blade template
         // $pdf = Pdf::loadView('headerfloat', $data);
-        $pdf = Pdf::loadView('test3', $data);
+        $pdf = Pdf::loadView('test4', $data);
         
         // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
         $pdf->setPaper('A4', 'potrait');
