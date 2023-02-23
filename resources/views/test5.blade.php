@@ -121,7 +121,8 @@
         body {
             /* for set the margin(space break) from header and content  */
             /* margin-top: 250px; */
-            margin-top: 210px;
+            /* margin-top: 210px; */
+            margin-top: 170px;
             font: 12pt Georgia, "Times New Roman", Times, serif;
             line-height: 1.3;
             background: #fff !important;
@@ -135,7 +136,7 @@
         }
 
         .subject_data {
-            text-transform: uppercase;
+            /* text-transform: uppercase; */
             font-weight: bold;
             padding-bottom: 10px;
         }
@@ -226,8 +227,8 @@
             position: fixed;
             height: 240px;
             /* height: 20px; */
-            /* bottom: 30px; */
-            bottom: 0;
+            bottom: 70px;
+            /* bottom: 0; */
             width:100%; 
         }
 
@@ -294,6 +295,28 @@
         .boxTotal2 {
             border: 1px solid #000;
             border-bottom: 3px double #000000;
+        }
+
+        .footer-b {
+            width:100%; 
+            border-collapse: collapse; 
+            color: #000;
+            /* font-size: 9pt; */
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-b td {
+            padding: 5px 0 0 0;
+            vertical-align: top;
+            font-size: 10pt;
+            /* border: solid 1px #000; */
+        }
+
+        .sign {
+            border-bottom: 1px double #000;
+            height:90px;
+            /* text-decoration: underline; */
         }
     
     </style>
@@ -366,7 +389,7 @@
             <table>
                 <tr>
                     <td class="subject_label">Subject:</td>
-                    <td class="subject_data">&nbsp;{{ $title }}</td>
+                    <td class="subject_data">{{ $title }}</td>
                 </tr>
             </table>
             {{-- <div class="bold">Subject:&nbsp;<span class="subject">{{ $title }}</span></div> --}}
@@ -378,7 +401,7 @@
                 $items = [1, 2, 3];
                 // $items = [1, 2, 3, 4];
                 // $items = [1, 2, 3, 4, 5];   
-                $items = [1, 2, 3, 4, 5, 6];
+                // $items = [1, 2, 3, 4, 5, 6];
                 // $items = [1, 2, 3, 4, 5, 6, 7];
                 // $items = [1, 2, 3, 4, 5, 6, 7, 8];
                 // $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -524,6 +547,27 @@
                         </table>
                     </td>
                 </tr>
+            </table>
+            <br>
+            <table class="footer-b">
+                <tr>
+                    <td style="width:30%">3TD SOLUTIONS SDN BHD</td>
+                    <td style="width:30%"></td>
+                    <td style="width:30%">LEMBAGA PEPERIKSAAN</td>
+                </tr>
+                <tr>
+                    <td class="sign">&nbsp;</td>
+                    <td class="sign1">&nbsp;</td>
+                    <td class="sign">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="">Ahmad Munzir Bin Kamalul Sahar</div>
+                        <div class=""><i>Pengurus Projek</i></div>
+                    </td>
+                    <td></td>
+                    <td>Tandatangan dan Cop</td>
+                </tr>   
             </table>
       
         </div>

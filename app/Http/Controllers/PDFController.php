@@ -139,7 +139,7 @@ class PDFController extends Controller
     {
     
         $data = [
-            'title' => 'perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (lan)',
+            'title' => 'Perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (lan).',
             'date' => date('m/d/Y'),
 //            'logo' => asset('storage/logo.png'),
         ];
