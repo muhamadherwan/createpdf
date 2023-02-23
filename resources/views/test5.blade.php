@@ -208,42 +208,6 @@
             width:70%;
          }
 
-         .last-page {
-            page-break-after: always;
-        }
-
-        /* .signatures {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 100px;
-        color:red; */
-    /* } */
-
-    .last-page {
-    page: last_page;
-    /* page-break-before: always;  */
-}
-
-/* @page {
-   @bottom-right {
-       content: "Please turn over";
-    }
-} */
-
-@page last_page {
-    @bottom-right {
-        content: "last page";
-    }
-
-    @page:last {
-    @top-center {
-        content: "Mike shinoda";
-    }
-}
-}
-
-
     
     </style>
 
@@ -306,25 +270,6 @@
           </table>
     </header>
 
-    <footer>
-        <div class="tnc">
-            Terms and Condition:
-            <ol type="a">
-                <li>Goods sold are not returnable or refundable. Otherwise a cancellation fee of 30% on <br>purchase price will be imposed.</li>
-                <li>Interest of 2% per month will be added to overdue accounts.</li>
-                <li>All TT charges incur within customers countries will be bored by applicant.</li>
-                <li>Goods sold or delivered are not returnable or exchangeable.</li>
-              </ol>
-
-            <div class="payment">
-                <span class="underline">Payment Informations:</span>
-            </div>    
-            <div class="payment">ACCOUNT HOLDER: "3TD SOLUTIONS SDN BHD"</div>
-            <div class="payment">CIMB BANK: 8602538985</div>  
-        </div>
-        
-    </footer>
-
     <main>
         <div id="contents">
 
@@ -342,10 +287,10 @@
                 $items = [1, 2];
                 $items = [1, 2, 3];
                 $items = [1, 2, 3, 4];
-                // $items = [1, 2, 3, 4, 5];
+                $items = [1, 2, 3, 4, 5];
                 $items = [1, 2, 3, 4, 5, 6];
-                // $items = [1, 2, 3, 4, 5, 6, 7];
-                // $items = [1, 2, 3, 4, 5, 6, 7, 8];
+                $items = [1, 2, 3, 4, 5, 6, 7];
+                $items = [1, 2, 3, 4, 5, 6, 7, 8];
                 $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             @endphp
 
@@ -363,31 +308,43 @@
                         <th>Total Amount (RM)</th>
                     </tr>
 
-                    @php $limit = 7 @endphp
-                    @php $check = 0 @endphp
+                    @php 
+                        $limit = 3;
+                        $counter = 0;
+                    @endphp
                     
                     @foreach($items as $key=> $item)
-                        @php $check++ @endphp
 
-                        @if( $check % $limit == 0 ) 
-                            {{-- @php echo '<div class="page-break"></div>'; @endphp  --}}
-                            {{-- <div class="page-break"></div> --}}
-                            <div style="page-break-before:always"></div>
+                        @if( $counter >= $limit )  
+                            @php $counter = 0 @endphp   
+                            <table class="tb">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price (RM)</th>
+                                    <th>SST 6%</th>
+                                    <th>Total Amount (RM)</th>
+                                </tr>
                         @endif
 
-                        <!-- rows to itterates -->
-                        {{-- <div class="">{{ $key+1 }}&nbsp;{{ $check }}</div> --}}
+                        <!-- itterates cell rows -->
                         <tr>
                             <td class="tcell">{{ $key + 1 }}</td>
-                            <td class="tcell">{{ $check }}</td>
+                            <td class="tcell">{{ $counter }}</td>
                             <td class="tcell">three</td>
                             <td class="tcell">four</td>
                             <td class="tcell">five</td>
                             <td class="tcell">hjkh</td>
                         </tr>
+                        @php $counter++ @endphp
+
+                        @if( $counter >= $limit )
+                            </table>
+                            <div class="page-break"></div>
+                        @endif
                             
                     @endforeach
-
                 </table>
 
              {{-- <div class="underline"></div> --}}
@@ -422,7 +379,7 @@
 
     <script type="text/php">
         if (isset($pdf)) {
-            $text = "page {PAGE_NUM} / {PAGE_COUNT}";
+            $text = "Page {PAGE_NUM} of {PAGE_COUNT}";
             $size = 10;
             $font = $fontMetrics->getFont("Verdana");
             $width = $fontMetrics->get_text_width($text, $font, $size) / 2;
