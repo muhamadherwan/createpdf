@@ -1,8 +1,3 @@
-{{-- @php
-    // $items = [1,2,3,4,5];
-    $items = [1,2];
-@endphp --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,39 +170,63 @@
         table.tb { 
             width:100%; 
             border-collapse: collapse; 
+            color: #000;
+            font-size: 9pt;
+            /* font-size: 12px; */
         }
 
         .tb th, .tb td {
             border: solid 1px #000;
-            padding: 5px;
-            font-weight: unset;  
+            padding: 10px 7px 10px 7px;
+            /* font-weight: unset;   */
+            font-weight: normal;
+            vertical-align: top;
         }
         
-        .tb th { 
-            text-align:left;
-         }
+        /* .tb th { 
+            text-align:center;
+         } */
 
         .tcell {
              /* background: #f6f8ff;  */
         }
 
-        #contents {
+        .aleft {
+            text-align: left;
+        }
 
+        .acenter {
+            text-align: center;
+        }
+
+        .aright {
+            text-align: right;
+            float: right;
+        }
+
+        .fleft {
+            float: left;
+            width: 2%;
+        }
+
+        .fright {
+            float: right;
+            width: 75%;
+        }
+
+        .fcontainer {
+            width: 100%;
+            height: 5%;
         }
 
         .page-break {
             page-break-after: always;
         }
-
-         /* .grandtotal{
-            padding-bottom:10px;
-         } */
-
+    
          .total {
             text-align: right;
             width:70%;
          }
-
     
     </style>
 
@@ -283,33 +302,34 @@
         
             
             @php
-                $items = [1];
-                $items = [1, 2];
+                // $items = [1];
+                // $items = [1, 2];
                 $items = [1, 2, 3];
-                $items = [1, 2, 3, 4];
-                $items = [1, 2, 3, 4, 5];
-                $items = [1, 2, 3, 4, 5, 6];
-                $items = [1, 2, 3, 4, 5, 6, 7];
-                $items = [1, 2, 3, 4, 5, 6, 7, 8];
-                $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                // $items = [1, 2, 3, 4];
+                // $items = [1, 2, 3, 4, 5];   
+                // $items = [1, 2, 3, 4, 5, 6];
+                // $items = [1, 2, 3, 4, 5, 6, 7];
+                // $items = [1, 2, 3, 4, 5, 6, 7, 8];
+                // $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                // $items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
             @endphp
 
             {{-- start items section --}}
             <div class="items_section">
 
-                {{-- items table --}}
+                {{-- start items table --}}
                 <table class="tb">
                     <tr>
                         <th>No</th>
-                        <th>Description</th>
+                        <th class="aleft">Description</th>
                         <th>Quantity</th>
-                        <th>Unit Price (RM)</th>
+                        <th>Unit Price</th>
                         <th>SST 6%</th>
-                        <th>Total Amount (RM)</th>
+                        <th>Total Amount</th>
                     </tr>
 
                     @php 
-                        $limit = 3;
+                        $limit = 4;
                         $counter = 0;
                     @endphp
                     
@@ -320,22 +340,45 @@
                             <table class="tb">
                                 <tr>
                                     <th>No</th>
-                                    <th>Description</th>
+                                    <th class="aleft">Description</th>
                                     <th>Quantity</th>
-                                    <th>Unit Price (RM)</th>
+                                    <th>Unit Price</th>
                                     <th>SST 6%</th>
-                                    <th>Total Amount (RM)</th>
+                                    <th>Total Amount</th>
                                 </tr>
                         @endif
 
                         <!-- itterates cell rows -->
                         <tr>
-                            <td class="tcell">{{ $key + 1 }}</td>
-                            <td class="tcell">{{ $counter }}</td>
-                            <td class="tcell">three</td>
-                            <td class="tcell">four</td>
-                            <td class="tcell">five</td>
-                            <td class="tcell">hjkh</td>
+                            <td class="tcell acenter" style="width:5%">
+                                {{ $key + 1 }}
+                            </td>
+                            <td class="tcell" style="width:0%">
+                                <div class="name">CAT6 Cabling with PVC Conduit Including Faceplate.</div>
+                                <div class="desc">Labelling New Port</div>
+
+                            </td>
+                            <td class="tcell acenter" style="width:8%">
+                                100,000
+                            </td>
+                            <td class="tcell" style="width:15%">
+                                <div class="fcontainer">
+                                    <div class="fleft aleft">RM</div>
+                                    <div class="fright aright">1,000,000.00</div>
+                                </div>
+                            </td>
+                            <td class="tcell" style="width:15%">
+                                <div class="fcontainer">
+                                    <div class="fleft aleft">RM</div>
+                                    <div class="fright aright">1,000,000.00</div>
+                                </div>
+                            </td>
+                            <td class="tcell" style="width:15%">
+                                <div class="fcontainer">
+                                    <div class="fleft aleft">RM</div>
+                                    <div class="fright aright">1,000,000.00</div>
+                                </div>
+                            </td>
                         </tr>
                         @php $counter++ @endphp
 
@@ -346,34 +389,23 @@
                             
                     @endforeach
                 </table>
+                {{-- end items table --}}
 
-             {{-- <div class="underline"></div> --}}
-             <table>
-             <tr><td colspan="6" class="total">total</td></tr>
-             <tr><td td colspan="6" class="total">sst</td></tr>
-             <tr><td td colspan="6" class="total">grandtotal</td></tr>
-            </table>
+                {{-- start total table --}}
+                <table class="tb2">
+                    <tr><td colspan="6" class="total">total</td></tr>
+                    <tr><td td colspan="6" class="total">sst</td></tr>
+                    <tr><td td colspan="6" class="total">grandtotal</td></tr>
+                </table>
+                {{-- end total table --}}
+
              
-             {{-- <div class="">total</div>
-             <div class="">sst</div>
-             <div class="grandtotal">grand total</div> --}}
-            <br><br><br><br>
-            {{-- <br><br><br><br> --}}
-            {{-- <br><br><br><br> --}}
+      
              <div class="">sign</div>
         
         </div> {{-- end content div --}}
-{{-- 
-        @if($is_last_page)
-  <div class="last-page">
-    This content will only be displayed on the last page.
-  </div>
-@endif --}}
-
         
-<div class="signatures">sign here</div>
-
-<div class="last-page"></div>
+        <div class="signatures">sign here</div>
 
     </main>
 
