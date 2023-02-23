@@ -8,4 +8,8 @@
     <div class="mt-10 text-gray-600 dark:text-gray-400 text-sm">
         <a class="nav-link" href="{{ route('pdf3') }}">Generate PDF3</a><br/>
     </div>
+    <br><br>
+    <div class="mt-10 text-gray-600 dark:text-gray-400 text-sm">
+        <a class="nav-link" href="{{ route('pdf4') }}">Generate PDF4</a><br/>
+    </div>
 </div>

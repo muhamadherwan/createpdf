@@ -116,27 +116,6 @@
             width: 65%;
         }
 
-        /* footer section */
-        footer {
-            position: fixed;
-            bottom: -50px;
-            width: 100%;
-            font: 11pt Georgia, "Times New Roman", Times, serif;
-            background: #fff !important;
-            color: #000;
-            border-top: 1px solid #000;
-            /* background: #f6f8ff; */
-        }
-
-        footer .payment { 
-           font: 12pt Georgia, "Times New Roman", Times, serif;
-           font-weight: bold;
-           padding-top: 3px;
-        }
-
-        ol {
-            padding-left: 20px;
-        }
 
         /* main section */
         body {
@@ -222,11 +201,91 @@
         .page-break {
             page-break-after: always;
         }
+
+        .subtotal {
+            background: greenyellow;
+            height: 100px;
+        }
     
-         .total {
-            text-align: right;
-            width:70%;
-         }
+    
+
+        /* footer section */
+        /* footer {
+            position: fixed;
+            bottom: -50px;
+            width: 100%;
+            font: 11pt Georgia, "Times New Roman", Times, serif;
+            background: #fff !important;
+            color: #000;
+            border-top: 1px solid #000;
+        }
+
+         */
+
+        .footer {
+            position: fixed;
+            height: 240px;
+            /* height: 20px; */
+            /* bottom: 30px; */
+            bottom: 0;
+            width:100%; 
+        }
+
+        .subtotal {
+            background: greenyellow;
+            height: 1%;
+        }
+
+        /* .contents {
+        margin-bottom: 240px;
+        } */
+        
+
+        ol {
+            padding-left: 20px;
+            margin-top:0;
+        }
+        
+        .payment { 
+           font: 11pt Georgia, "Times New Roman", Times, serif;
+           font-weight: bold;
+           padding-top: 3px;
+        }
+
+        .footer-a {
+            width:100%; 
+            border-collapse: collapse; 
+            color: #000;
+            font-size: 9pt;
+            padding: 0;
+            margin: 0;
+            border-top: solid 1px #000;
+        }
+
+        .footer-a td {
+            /* border: solid 1px #000; */
+            padding: 5px 0 0 0;
+            /* font-weight: unset;   */
+            font-weight: normal;
+            vertical-align: top;
+        }
+
+        .total {
+            width:100%; 
+            border-collapse: collapse; 
+            color: #000;
+            font-size: 11pt;
+            padding: 0;
+            margin: 0;
+            /* border: solid 1px #000; */
+        }
+
+        .total td {
+            /* border: solid 1px #000; */
+            padding: 10px 7px 10px 7px;
+            /* font-weight: normal; */
+            vertical-align: top;
+        }
     
     </style>
 
@@ -288,6 +347,9 @@
             </tr>
           </table>
     </header>
+
+
+    {{-- <footer>testfooter</footer> --}}
 
     <main>
         <div id="contents">
@@ -374,7 +436,7 @@
                                 </div>
                             </td>
                             <td class="tcell" style="width:15%">
-                                <div class="fcontainer">
+                                <div class="fcontainer2">
                                     <div class="fleft aleft">RM</div>
                                     <div class="fright aright">1,000,000.00</div>
                                 </div>
@@ -390,23 +452,73 @@
                     @endforeach
                 </table>
                 {{-- end items table --}}
+        </div> 
+        {{-- end content section --}}
 
-                {{-- start total table --}}
-                <table class="tb2">
-                    <tr><td colspan="6" class="total">total</td></tr>
-                    <tr><td td colspan="6" class="total">sst</td></tr>
-                    <tr><td td colspan="6" class="total">grandtotal</td></tr>
-                </table>
-                {{-- end total table --}}
+       {{-- start footer section --}}
+        <div class="footer">
+        
+            <table class="footer-a">
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    Terms and Condition:    
+                                    <ol type="a">
+                                        <li>Goods sold are not returnable or refundable. Otherwise a cancellation fee  <br> of 30% on purchase price will be imposed.</li>
+                                        <li>Interest of 2% per month will be added to overdue accounts.</li>
+                                        <li>All TT charges incur within customers countries will be bored by applicant.</li>
+                                        <li>Goods sold or delivered are not returnable or exchangeable.</li>
+                                    </ol>
+                                    <div class="payment">
+                                        <span class="underline">Payment Informations:</span>
+                                    </div>    
+                                    <div class="payment">ACCOUNT HOLDER: "3TD SOLUTIONS SDN BHD"</div>
+                                    <div class="payment">CIMB BANK: 8602538985</div>
+                                </td>
+                        </tr>
+                        </table>
+                    </td>
+                    <td style="width:40%">
+                        <table class="total">
+                            <tr>
+                                <td class="aright">Subtotal</td>
+                                <td>
+                                    <div class="fcontainer2">
+                                        <div class="fleft aleft">RM</div>
+                                        <div class="fright aright">1,000,000.00</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="aright">Total 6% SST</td>
+                                <td>
+                                    <div class="fcontainer2">
+                                        <div class="fleft aleft">RM</div>
+                                        <div class="fright aright">1,000,000.00</div>
+                                    </div>
+                                </td>
+                            </tr>
 
-             
+                            <tr>
+                                <td class="aright">
+                                    <div class="bold">GRAND TOTAL</div></td>
+                                <td>
+                                    <div class="fcontainer2">
+                                        <div class="fleft aleft bold">RM</div>
+                                        <div class="fright aright bold">1,000,000.00</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
       
-             <div class="">sign</div>
-        
-        </div> {{-- end content div --}}
-        
-        <div class="signatures">sign here</div>
-
+        </div>
+       {{-- end footer section --}} 
     </main>
 
     <script type="text/php">
