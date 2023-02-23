@@ -286,6 +286,15 @@
             /* font-weight: normal; */
             vertical-align: top;
         }
+
+        .boxTotal1 {
+            border: 1px solid #000;
+        }
+
+        .boxTotal2 {
+            border: 1px solid #000;
+            border-bottom: 3px double #000000;
+        }
     
     </style>
 
@@ -369,7 +378,7 @@
                 $items = [1, 2, 3];
                 // $items = [1, 2, 3, 4];
                 // $items = [1, 2, 3, 4, 5];   
-                // $items = [1, 2, 3, 4, 5, 6];
+                $items = [1, 2, 3, 4, 5, 6];
                 // $items = [1, 2, 3, 4, 5, 6, 7];
                 // $items = [1, 2, 3, 4, 5, 6, 7, 8];
                 // $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -484,7 +493,7 @@
                         <table class="total">
                             <tr>
                                 <td class="aright">Subtotal</td>
-                                <td>
+                                <td class=" boxTotal1">
                                     <div class="fcontainer2">
                                         <div class="fleft aleft">RM</div>
                                         <div class="fright aright">1,000,000.00</div>
@@ -493,7 +502,7 @@
                             </tr>
                             <tr>
                                 <td class="aright">Total 6% SST</td>
-                                <td>
+                                <td class=" boxTotal1">
                                     <div class="fcontainer2">
                                         <div class="fleft aleft">RM</div>
                                         <div class="fright aright">1,000,000.00</div>
@@ -504,7 +513,7 @@
                             <tr>
                                 <td class="aright">
                                     <div class="bold">GRAND TOTAL</div></td>
-                                <td>
+                                    <td class=" boxTotal2">
                                     <div class="fcontainer2">
                                         <div class="fleft aleft bold">RM</div>
                                         <div class="fright aright bold">1,000,000.00</div>
