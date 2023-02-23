@@ -154,7 +154,21 @@ class PDFController extends Controller
         // $pdf = Pdf::loadView('headerfloat', $data);
         $pdf = Pdf::loadView('test5', $data);
 
+        // exp to set multiple setting:
+        //   // set the options for the PDF instance
+        //   $pdf->setOption([
+        //     'enable_php' => true,
+        //     'javascript_delay' => 1000, // delay in milliseconds to allow JavaScript to run before generating PDF
+        //     'javascript' => $javascript, // the JavaScript script to add footer to the last page
+        // ]);
+
         $pdf->set_option("enable_php", true);
+        // $pdf->set_options(
+        //     [
+        //         'enable_php' => true,
+        //         'defaultFont' => 'verdana',
+        //     ]);
+
 
         // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
         $pdf->setPaper('A4', 'potrait');
@@ -166,5 +180,6 @@ class PDFController extends Controller
         return $pdf->stream('invoice.pdf');
         
     }
+
 
 }
