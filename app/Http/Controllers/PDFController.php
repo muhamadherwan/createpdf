@@ -147,13 +147,15 @@ class PDFController extends Controller
         // set pdf option
         // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
 
-        Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true]);
+        // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true]);
         
-        
+
         // use if have data to pass to blade template
         // $pdf = Pdf::loadView('headerfloat', $data);
-        $pdf = Pdf::loadView('test4', $data);
-        
+        $pdf = Pdf::loadView('test5', $data);
+
+        $pdf->set_option("enable_php", true);
+
         // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
         $pdf->setPaper('A4', 'potrait');
         
