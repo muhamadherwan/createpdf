@@ -157,7 +157,8 @@
 
         .tb th, .tb td {
             border: solid 1px #000;
-            padding: 10px 7px 10px 7px;
+            /* padding: 10px 7px 10px 7px; */
+            padding: 5px 5px 5px 5px;
             /* font-weight: unset;   */
             font-weight: normal;
             vertical-align: top;
@@ -566,7 +567,7 @@
                         <div class=""><i>Pengurus Projek</i></div>
                     </td>
                     <td></td>
-                    <td>Tandatangan dan Cop</td>
+                    <td>Signature and Stamp</td>
                 </tr>   
             </table>
       
