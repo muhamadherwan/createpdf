@@ -550,26 +550,70 @@
                 </tr>
             </table>
             <br>
-            <table class="footer-b">
-                <tr>
-                    <td style="width:30%">3TD SOLUTIONS SDN BHD</td>
-                    <td style="width:30%"></td>
-                    <td style="width:30%">LEMBAGA PEPERIKSAAN</td>
-                </tr>
-                <tr>
-                    <td class="sign">&nbsp;</td>
-                    <td class="sign1">&nbsp;</td>
-                    <td class="sign">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="">Ahmad Munzir Bin Kamalul Sahar</div>
-                        <div class=""><i>Pengurus Projek</i></div>
-                    </td>
-                    <td></td>
-                    <td>Signature and Stamp</td>
-                </tr>   
-            </table>
+            
+            {{-- start signature section --}}
+            
+            @php 
+                // $sign = 1;
+                $sign = 2;
+                // $sign = 3;
+            @endphp
+
+            @switch( $sign )
+                @case( $sign == 1 )
+                    <table class="footer-b">
+                        <tr>
+                            <td style="width:30%">3TD SOLUTIONS SDN BHD</td>
+                            <td style="width:30%"></td>
+                            <td style="width:30%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="sign">&nbsp;</td>
+                            <td class="sign1">&nbsp;</td>
+                            <td class="sign1">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="">Ahmad Munzir Bin Kamalul Sahar</div>
+                                <div class=""><i>Pengurus Projek</i></div>
+                            </td>
+                            <td></td>
+                            <td>&nbsp;</td>
+                        </tr>   
+                    </table>
+                    @break
+            
+                @case( $sign == 2 )
+                    <table class="footer-b">
+                        <tr>
+                            <td style="width:30%">3TD SOLUTIONS SDN BHD</td>
+                            <td style="width:30%"></td>
+                            <td style="width:30%">LEMBAGA PEPERIKSAAN</td>
+                        </tr>
+                        <tr>
+                            <td class="sign">&nbsp;</td>
+                            <td class="sign1">&nbsp;</td>
+                            <td class="sign">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="">Ahmad Munzir Bin Kamalul Sahar</div>
+                                <div class=""><i>Pengurus Projek</i></div>
+                            </td>
+                            <td></td>
+                            <td>Signature and Stamp</td>
+                        </tr>   
+                        </table>
+                    @break
+                        
+                @default    
+                <table class="footer-b">
+                    <tr>
+                        <td style="width:30%; font-size:11pt; font-style:bold">This is a computer-generated document. No signature is required.</td>
+                    </tr>
+                </table>
+            @endswitch    
+            {{-- end signature section --}}
       
         </div>
        {{-- end footer section --}} 
