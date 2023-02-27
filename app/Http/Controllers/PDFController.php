@@ -237,14 +237,58 @@ class PDFController extends Controller
             'invoiceNo' => 'INV-230101-001',
             'poNo' => 'PO-200101-001',
             'date' => date('m/d/Y'),
-            'due' => '30 Days',
+            'due' => '30',
             'title' => 'Perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (LAN).',
-            'items' => [1, 2],
-//            'items' => [1, 2, 3, 4, 5],
-            'subtotal' => '1,000,000.00',
-            'totalSst' => '1,000,000.00',
-            'grandTotal' => '1,000,000.00',
-            'sign' => 4
+            'subtotal' => '1,000,100.00',
+            'totalSst' => '1,000,100.00',
+            'totalSst' => '',
+            'grandTotal' => '1,000,100.00',
+            'sign' => 4,
+            'items' => [
+                ['title' => 'CAT6 Cabling with PVC Conduit Including Faceplate.',
+                    'description' => 'Labelling New Port',
+                    'quantity' => '32',
+                    'unitPrice' => '460.00',
+                    'sst' => '',
+                    'totalAmount' => '1,000,000.00'
+                ],
+                ['title' => 'SFP Module',
+                    'description' => '',
+                    'quantity' => '2',
+                    'unitPrice' => '1,500.00',
+                    'sst' => '',
+                    'totalAmount' => '1,000,000.00'
+                ],
+                ['title' => 'Professional Services',
+                    'description' => 'Configuring Main Switch to Makmal Sains Switch',
+                    'quantity' => '1',
+                    'unitPrice' => '1,886.79',
+                    'sst' => '113.21',
+                    'totalAmount' => '1,000,100.00'
+                ],
+//                ['title' => '4',
+//                    'description' => '',
+//                    'quantity' => '',
+//                    'unitPrice' => '',
+//                    'sst' => '',
+//                    'totalAmount' => ''
+//                ],
+//                ['title' => '5',
+//                    'description' => '',
+//                    'quantity' => '',
+//                    'unitPrice' => '',
+//                    'sst' => '',
+//                    'totalAmount' => ''
+//                ],
+//                ['title' => '6',
+//                    'description' => '',
+//                    'quantity' => '',
+//                    'unitPrice' => '',
+//                    'sst' => '',
+//                    'totalAmount' => ''
+//                ]
+            ],
+
         ];
 
         // use if have data to pass to blade template
@@ -253,7 +297,7 @@ class PDFController extends Controller
         // exp to set multiple setting:
         $pdf->set_option("enable_php", true);
         // $pdf->set_options(
-        //     
+        //
         //         'enable_php' => true,
         //         'defaultFont' => 'verdana',
         //     ]);

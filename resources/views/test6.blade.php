@@ -159,6 +159,7 @@
             border: solid 1px #000;
             /* padding: 10px 7px 10px 7px; */
             padding: 5px 5px 5px 5px;
+            /*padding: 5px 5px 0 5px;*/
             /* font-weight: unset;   */
             font-weight: normal;
             vertical-align: top;
@@ -168,9 +169,9 @@
             text-align:center;
          } */
 
-        .tcell {
-            /* background: #f6f8ff;  */
-        }
+        /*.tcell {*/
+        /*     background: #f6f8ff;*/
+        /*}*/
 
         .aleft {
             text-align: left;
@@ -204,16 +205,10 @@
             page-break-after: always;
         }
 
-        .subtotal {
-            background: greenyellow;
-            height: 100px;
-        }
-
-
-
         /* footer section */
         /* footer {
             position: fixed;
+            bottom: -50px;
             bottom: -50px;
             width: 100%;
             font: 11pt Georgia, "Times New Roman", Times, serif;
@@ -326,9 +321,6 @@
             vertical-align: bottom;
         }
 
-        #pageNo { text-align: center;border-top: 1px solid black;}
-        #pageNo .page:after { content: counter(page, decimal); }
-
     </style>
 
 </head>
@@ -418,8 +410,8 @@
                     $counter = 0;
                 @endphp
 
-                @foreach($items as $key=> $item)
 
+                @foreach($items as $key=> $item)
                     @if( $counter >= $limit )
                         @php $counter = 0 @endphp
                         <table class="tb">
@@ -438,30 +430,38 @@
                                 <td class="tcell acenter" style="width:5%">
                                     {{ $key + 1 }}
                                 </td>
-                                <td class="tcell" style="width:0%">
-                                    <div class="name">CAT6 Cabling with PVC Conduit Including Faceplate.</div>
-                                    <div class="desc">Labelling New Port</div>
 
+                                <td class="tcell" style="width:0%">
+                                    <div class="name">{{ $item['title'] }}</div>
+                                    @if (!empty($item['description']))
+                                        <div class="desc1">{{$item['description']}}</div>
+                                    @endif
                                 </td>
+
                                 <td class="tcell acenter" style="width:8%">
-                                    100,000
+                                    {{ $item['quantity'] }}
                                 </td>
                                 <td class="tcell" style="width:15%">
                                     <div class="fcontainer">
                                         <div class="fleft aleft">RM</div>
-                                        <div class="fright aright">1,000,000.00</div>
+                                        <div class="fright aright">{{ $item['unitPrice'] }}</div>
                                     </div>
                                 </td>
                                 <td class="tcell" style="width:15%">
                                     <div class="fcontainer">
                                         <div class="fleft aleft">RM</div>
-                                        <div class="fright aright">1,000,000.00</div>
+                                        @if (!empty($item['sst']))
+                                            <div class="fright aright">{{$item['sst']}}</div>
+                                        @else
+                                            <div class="fright acenter">-</div>
+                                        @endif
+
                                     </div>
                                 </td>
                                 <td class="tcell" style="width:15%">
                                     <div class="fcontainer2">
                                         <div class="fleft aleft">RM</div>
-                                        <div class="fright aright">1,000,000.00</div>
+                                        <div class="fright aright">{{ $item['totalAmount'] }}</div>
                                     </div>
                                 </td>
                             </tr>
@@ -517,7 +517,9 @@
                                 <td class=" boxTotal1">
                                     <div class="fcontainer2">
                                         <div class="fleft aleft">RM</div>
-                                        <div class="fright aright">{{ $totalSst }}</div>
+                                        <div class="fright aright">
+                                            {{ !empty($totalSst) ? $totalSst : "-" }}
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
