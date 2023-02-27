@@ -253,7 +253,7 @@ class PDFController extends Controller
         // exp to set multiple setting:
         $pdf->set_option("enable_php", true);
         // $pdf->set_options(
-        //     [
+        //     
         //         'enable_php' => true,
         //         'defaultFont' => 'verdana',
         //     ]);
