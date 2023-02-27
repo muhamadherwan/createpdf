@@ -619,7 +619,7 @@
 
         </div>
        {{-- end footer section --}}
-
+        </div>
 
     </main>
 
