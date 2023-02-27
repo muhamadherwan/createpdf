@@ -320,6 +320,12 @@
             /* text-decoration: underline; */
         }
 
+        .signature {
+            width: 150px;
+            height: 100px;
+            vertical-align: bottom;
+        }
+
         #pageNo { text-align: center;border-top: 1px solid black;}
         #pageNo .page:after { content: counter(page, decimal); }
 
@@ -392,20 +398,6 @@
             </tr>
         </table>
         {{-- <div class="bold">Subject:&nbsp;<span class="subject">{{ $title }}</span></div> --}}
-
-
-        @php
-            // $items = [1];
-            // $items = [1, 2];
-            $items = [1, 2, 3];
-            // $items = [1, 2, 3, 4];
-            // $items = [1, 2, 3, 4, 5];
-            // $items = [1, 2, 3, 4, 5, 6];
-            // $items = [1, 2, 3, 4, 5, 6, 7];
-            // $items = [1, 2, 3, 4, 5, 6, 7, 8];
-            // $items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            // $items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        @endphp
 
         {{-- start items section --}}
         <div class="items_section">
@@ -576,7 +568,7 @@
                     <tr>
                         <td style="width:30%">3TD SOLUTIONS SDN BHD</td>
                         <td style="width:30%"></td>
-                        <td style="width:30%">LEMBAGA PEPERIKSAAN</td>
+                        <td style="width:30%">{{ $customerName }}</td>
                     </tr>
                     <tr>
                         <td class="sign">&nbsp;</td>
@@ -594,7 +586,55 @@
                 </table>
                 @break
 
-                @case( 3 == $sign)
+                @case( 3 == $sign )
+                <table class="footer-b">
+                    <tr>
+                        <td style="width:30%">3TD SOLUTIONS SDN BHD</td>
+                        <td style="width:30%"></td>
+                        <td style="width:30%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="sign">&nbsp;
+                            <img src="{{ storage_path('app/public/images/sample_sign.png') }}" class="signature">
+                        </td>
+                        <td class="sign1">&nbsp;</td>
+                        <td class="sign1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="">Ahmad Munzir Bin Kamalul Sahar</div>
+                            <div class=""><i>Pengurus Projek</i></div>
+                        </td>
+                        <td></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                @break
+
+                @case( 4 == $sign )
+                <table class="footer-b">
+                    <tr>
+                        <td style="width:30%">3TD SOLUTIONS SDN BHD</td>
+                        <td style="width:30%"></td>
+                        <td style="width:30%">{{ $customerName }}</td>
+                    </tr>
+                    <tr>
+                        <td class="sign"><img src="{{ storage_path('app/public/images/sample_sign.png') }}" class="signature"></td>
+                        <td class="sign1">&nbsp;</td>
+                        <td class="sign">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="">Ahmad Munzir Bin Kamalul Sahar</div>
+                            <div class=""><i>Pengurus Projek</i></div>
+                        </td>
+                        <td></td>
+                        <td>Signature and Stamp</td>
+                    </tr>
+                </table>
+                @break
+
+                @case( 5 == $sign)
                 <table class="footer-b">
                     <tr>
                         <td style="width:30%; font-size:11pt; font-style:bold">This is a computer-generated document. No signature is required.</td>

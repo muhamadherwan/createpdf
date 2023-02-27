@@ -239,11 +239,12 @@ class PDFController extends Controller
             'date' => date('m/d/Y'),
             'due' => '30 Days',
             'title' => 'Perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (LAN).',
-            'items' => '',
+            'items' => [1, 2],
+//            'items' => [1, 2, 3, 4, 5],
             'subtotal' => '1,000,000.00',
             'totalSst' => '1,000,000.00',
             'grandTotal' => '1,000,000.00',
-            'sign' => 3
+            'sign' => 4
         ];
 
         // use if have data to pass to blade template
@@ -252,7 +253,7 @@ class PDFController extends Controller
         // exp to set multiple setting:
         $pdf->set_option("enable_php", true);
         // $pdf->set_options(
-        //     [
+        //     
         //         'enable_php' => true,
         //         'defaultFont' => 'verdana',
         //     ]);
