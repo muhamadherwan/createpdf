@@ -10,6 +10,6 @@
     </div>
     <br><br>
     <div class="mt-10 text-gray-600 dark:text-gray-400 text-sm">
-        <a class="nav-link" href="{{ route('pdf4') }}">Generate PDF4</a><br/>
+        <a class="nav-link" href="{{ route('pdf4') }}">Generate PDF4 TO TEST PAGE NUMBER</a><br/>
     </div>
 </div>
