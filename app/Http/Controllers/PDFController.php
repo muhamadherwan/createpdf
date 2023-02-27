@@ -230,19 +230,24 @@ class PDFController extends Controller
     public function generatePDF3()
     {
         $data = [
-            'title' => 'Perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (lan).',
+            'customerName' => 'Lembaga Peperiksaan',
+            'customerAddress1' => 'Jln Tunku Abdul Halim',
+            'customerAddress2' => 'Kompleks Kerajaan, 540480 Kuala Lumpur',
+            'customerAddress3' => 'Wilayah Persekutuan Kuala Lumpur',
+            'invoiceNo' => 'INV-230101-001',
+            'poNo' => 'PO-200101-001',
             'date' => date('m/d/Y'),
-//            'logo' => asset('storage/logo.png'),
+            'due' => '30 Days',
+            'title' => 'Perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (LAN).',
+            'items' => '',
+            'subtotal' => '1,000,000.00',
+            'totalSst' => '1,000,000.00',
+            'grandTotal' => '1,000,000.00',
+            'sign' => 3
         ];
 
-        // set pdf option
-        // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-
-        // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true]);
-
-
         // use if have data to pass to blade template
-        $pdf = Pdf::loadView('test5', $data);
+        $pdf = Pdf::loadView('test6', $data);
 
         // exp to set multiple setting:
         $pdf->set_option("enable_php", true);
@@ -252,8 +257,6 @@ class PDFController extends Controller
         //         'defaultFont' => 'verdana',
         //     ]);
 
-
-        // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
         $pdf->setPaper('A4', 'potrait');
 
         // download the template as pdf and set name as invoice
