@@ -37,7 +37,7 @@ class PDFController extends Controller
         $html = view('headerfloat')->render();
         $pdf = PDF::loadHtml($html);
 
-        
+
         //// current stable part
         $pdf->setPaper('A4','portrait'); // setup the paper and orientation
 
@@ -48,7 +48,7 @@ class PDFController extends Controller
         $pdf->render(); // render the html as pdf
         return $pdf->stream('preview.pdf'); // if want to output the generated pdf to browser (preview)
 
-        
+
         // return view('headerfloat');
 
 
@@ -63,7 +63,7 @@ class PDFController extends Controller
         //     <div>First column</div>
         //     <div>Second column</div>
         //     <div>Third column</div>
-        // </div>';            
+        // </div>';
 
         // $html = view('inv3')->render();
 
@@ -76,11 +76,11 @@ class PDFController extends Controller
 
 
         // return view('bts');
-        //    return view('inv2');    
+        //    return view('inv2');
             //   return view('inv3');
            //    return view('myPDF');
-      
-        
+
+
     }
 
     public function generatePDF2()
@@ -88,14 +88,14 @@ class PDFController extends Controller
         // instance options
         // $options = new Options();
         // $options->set('isRemoteEnabled', true);
-        
+
         // set other options, such as font path or margins
         // $options->set([
         //     'isPhpEnabled' => true,
         //     'isRemoteEnabled' => true,
         //     // 'fontDir' => '/path/to/fonts',
         //     'margin-top' => '50mm',
-        //     'margin-bottom' => '50mm',    
+        //     'margin-bottom' => '50mm',
         // ]);
 
         // $pdf->setOptions([
@@ -103,7 +103,7 @@ class PDFController extends Controller
         //     // 'fontDir' => '/path/to/fonts',
         //     'margin-top' => '20mm',
         //     'margin-bottom' => '20mm',
-        // ]);        
+        // ]);
 
         // create dompdf instance
         // $pdf = new Dompdf();
@@ -122,7 +122,7 @@ class PDFController extends Controller
         //     'margin-top' => '20mm',
         //     'margin-bottom' => '20mm',
         // ]);
-        
+
         // load the HTML content
         $html = '
         <h1>Hello world
@@ -135,9 +135,100 @@ class PDFController extends Controller
         return $pdf->stream('document.pdf');
     }
 
+//    public function generatePDF3()
+//    {
+//
+//        $data = [
+//            'title' => 'Perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (lan).',
+//            'date' => date('m/d/Y'),
+////            'logo' => asset('storage/logo.png'),
+//        ];
+//
+//        // set pdf option
+//        // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+//
+//        // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true]);
+//
+//
+//        // use if have data to pass to blade template
+//        // $pdf = Pdf::loadView('headerfloat', $data);
+//
+//        $pdf = Pdf::loadView('test5', $data);
+//
+//        // exp to set multiple setting:
+//        //   // set the options for the PDF instance
+//        //   $pdf->setOption([
+//        //     'enable_php' => true,
+//        //     'javascript_delay' => 1000, // delay in milliseconds to allow JavaScript to run before generating PDF
+//        //     'javascript' => $javascript, // the JavaScript script to add footer to the last page
+//        // ]);
+//
+//        $pdf->set_option("enable_php", true);
+//        // $pdf->set_options(
+//        //     [
+//        //         'enable_php' => true,
+//        //         'defaultFont' => 'verdana',
+//        //     ]);
+//
+//
+//        // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
+//        $pdf->setPaper('A4', 'potrait');
+//
+//        // download the template as pdf and set name as invoice
+//        // return $pdf->download('invoice.pdf');
+//
+//        // stream the template as pdf in browser and set name as invoice
+//        return $pdf->stream('invoice.pdf');
+//
+//    }
+
+
+
+    public function generatePDF4()
+    {
+
+    $data = [
+        'title' => 'My PDF Document',
+        'pageCount' => null // Initialize pageCount to null
+    ];
+
+    $pdf = \PDF::loadView('test6', $data);
+
+    // set pdf options
+    $pdf->set_option("enable_php", true);
+    $pdf->setPaper('A4', 'portrait');
+
+    // $canvas = $pdf->getDompdf()->get_canvas();
+    // $cpdf = $canvas->get_cpdf();
+    // if ($cpdf === null) {
+    //     // If there was an error, set an error message
+    //     $data['errorMessage'] = 'Error: ' . $canvas->get_openssl_error();
+    // } else {
+    //     // If there was no error, get the page count
+    //     $pageCount = $canvas->get_page_number();
+    //     $data['pageCount'] = $pageCount; // Set pageCount in data array
+    // }
+
+
+    // $this->dompdf->stream("test.pdf", array("Attachment" => 0));
+
+    $pageCount = $pdf->getDompdf()->get_canvas()->get_page_number();
+    $data['pageCount'] = $pageCount; // Set pageCount in data array
+
+
+    // set Page-Count header and other options
+    $options = [
+        'Page-Count' => $pageCount,
+        'Content-Disposition' => 'attachment; filename="my-pdf-document.pdf"'
+    ];
+
+    // stream the pdf to the browser with additional options
+    return $pdf->stream($options);
+
+    }
+
     public function generatePDF3()
     {
-    
         $data = [
             'title' => 'Perkhidmatan penyelenggaraan fasa 11 sistem rangkaian local area network (lan).',
             'date' => date('m/d/Y'),
@@ -148,20 +239,12 @@ class PDFController extends Controller
         // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
 
         // Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true]);
-        
+
 
         // use if have data to pass to blade template
-        // $pdf = Pdf::loadView('headerfloat', $data);
         $pdf = Pdf::loadView('test5', $data);
 
         // exp to set multiple setting:
-        //   // set the options for the PDF instance
-        //   $pdf->setOption([
-        //     'enable_php' => true,
-        //     'javascript_delay' => 1000, // delay in milliseconds to allow JavaScript to run before generating PDF
-        //     'javascript' => $javascript, // the JavaScript script to add footer to the last page
-        // ]);
-
         $pdf->set_option("enable_php", true);
         // $pdf->set_options(
         //     [
@@ -172,14 +255,11 @@ class PDFController extends Controller
 
         // $pdf = Pdf::loadView('headerfloat')->setPaper('a4','potrait');
         $pdf->setPaper('A4', 'potrait');
-        
+
         // download the template as pdf and set name as invoice
         // return $pdf->download('invoice.pdf');
 
         // stream the template as pdf in browser and set name as invoice
         return $pdf->stream('invoice.pdf');
-        
     }
-
-
 }

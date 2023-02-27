@@ -7,11 +7,11 @@
     <title>{{ $title }}</title>
 
     <style>
-        
+
         /* set the page margin for pdf or print */
         @page {
             /* margin: 150px 50px 80px 50px; */
-            margin: 150px 50px 100px 50px; 
+            margin: 150px 50px 100px 50px;
         }
 
         /* header section */
@@ -48,7 +48,7 @@
 
         .logo {
             width: 167px;
-            height: 135px;  
+            height: 135px;
         }
 
         .header_company {
@@ -56,7 +56,7 @@
             text-align: left;
             vertical-align: top;
             padding-top: 10px;
-            padding-left: 10px; 
+            padding-left: 10px;
             padding-bottom: 20px;
             font-size: 11pt;
             /* background: plum; */
@@ -92,7 +92,7 @@
 
         .header_info  {
             vertical-align: top;
-            width: 34%; 
+            width: 34%;
         }
 
         .header_info_label {
@@ -147,9 +147,9 @@
         }
 
         /* items table section */
-        table.tb { 
-            width:100%; 
-            border-collapse: collapse; 
+        table.tb {
+            width:100%;
+            border-collapse: collapse;
             color: #000;
             font-size: 9pt;
             /* font-size: 12px; */
@@ -163,8 +163,8 @@
             font-weight: normal;
             vertical-align: top;
         }
-        
-        /* .tb th { 
+
+        /* .tb th {
             text-align:center;
          } */
 
@@ -208,8 +208,8 @@
             background: greenyellow;
             height: 100px;
         }
-    
-    
+
+
 
         /* footer section */
         /* footer {
@@ -230,7 +230,7 @@
             /* height: 20px; */
             bottom: 70px;
             /* bottom: 0; */
-            width:100%; 
+            width:100%;
         }
 
         .subtotal {
@@ -241,22 +241,22 @@
         /* .contents {
         margin-bottom: 240px;
         } */
-        
+
 
         ol {
             padding-left: 20px;
             margin-top:0;
         }
-        
-        .payment { 
+
+        .payment {
            font: 11pt Georgia, "Times New Roman", Times, serif;
            font-weight: bold;
            padding-top: 3px;
         }
 
         .footer-a {
-            width:100%; 
-            border-collapse: collapse; 
+            width:100%;
+            border-collapse: collapse;
             color: #000;
             font-size: 9pt;
             padding: 0;
@@ -273,8 +273,8 @@
         }
 
         .total {
-            width:100%; 
-            border-collapse: collapse; 
+            width:100%;
+            border-collapse: collapse;
             color: #000;
             font-size: 11pt;
             padding: 0;
@@ -299,8 +299,8 @@
         }
 
         .footer-b {
-            width:100%; 
-            border-collapse: collapse; 
+            width:100%;
+            border-collapse: collapse;
             color: #000;
             /* font-size: 9pt; */
             padding: 0;
@@ -319,7 +319,10 @@
             height:90px;
             /* text-decoration: underline; */
         }
-    
+
+        #pageNo { text-align: center;border-top: 1px solid black;}
+        #pageNo .page:after { content: counter(page, decimal); }
+
     </style>
 
 </head>
@@ -362,7 +365,8 @@
                             <div class="header_info_label">Date :</div>
                             <div class="header_info_label">Due :</div>
                             <div class="header_info_label">SST :</div>
-                            <div class="header_info_label">Page :</div>
+{{--                            <div class="header_info_label">Page :</div>--}}
+
                         </td>
                         <td>
                             <div class="header_info_data">INV-230101-001</div>
@@ -370,10 +374,11 @@
                             <div class="header_info_data">13-02-2023</div>
                             <div class="header_info_data">30 Days</div>
                             <div class="header_info_data">W24-2010-32000007</div>
-                            <div class="header_info_data">1 of 1</div>
+{{--                            <div class="header_info_data">1 of 1</div>--}}
+
                             {{-- {PAGE_NUM} / {PAGE_COUNT}
                             <div class="header_info_data">{PAGE_NUM} of {PAGE_COUNT}</div> --}}
-                          </td>        
+                          </td>
                     </tr>
                 </table>
               </td>
@@ -381,10 +386,8 @@
           </table>
     </header>
 
-
-    {{-- <footer>testfooter</footer> --}}
-
     <main>
+
         <div id="contents">
 
             <table>
@@ -394,14 +397,14 @@
                 </tr>
             </table>
             {{-- <div class="bold">Subject:&nbsp;<span class="subject">{{ $title }}</span></div> --}}
-        
-            
+
+
             @php
                 // $items = [1];
                 // $items = [1, 2];
                 $items = [1, 2, 3];
                 // $items = [1, 2, 3, 4];
-                // $items = [1, 2, 3, 4, 5];   
+                // $items = [1, 2, 3, 4, 5];
                 // $items = [1, 2, 3, 4, 5, 6];
                 // $items = [1, 2, 3, 4, 5, 6, 7];
                 // $items = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -423,15 +426,15 @@
                         <th>Total Amount</th>
                     </tr>
 
-                    @php 
+                    @php
                         $limit = 4;
                         $counter = 0;
                     @endphp
-                    
+
                     @foreach($items as $key=> $item)
 
-                        @if( $counter >= $limit )  
-                            @php $counter = 0 @endphp   
+                        @if( $counter >= $limit )
+                            @php $counter = 0 @endphp
                             <table class="tb">
                                 <tr>
                                     <th>No</th>
@@ -476,28 +479,27 @@
                             </td>
                         </tr>
                         @php $counter++ @endphp
-
                         @if( $counter >= $limit )
                             </table>
                             <div class="page-break"></div>
                         @endif
-                            
+
                     @endforeach
                 </table>
                 {{-- end items table --}}
-        </div> 
+        </div>
         {{-- end content section --}}
 
        {{-- start footer section --}}
         <div class="footer">
-        
+
             <table class="footer-a">
                 <tr>
                     <td>
                         <table>
                             <tr>
                                 <td>
-                                    Terms and Condition:    
+                                    Terms and Condition:
                                     <ol type="a">
                                         <li>Goods sold are not returnable or refundable. Otherwise a cancellation fee  <br> of 30% on purchase price will be imposed.</li>
                                         <li>Interest of 2% per month will be added to overdue accounts.</li>
@@ -506,7 +508,7 @@
                                     </ol>
                                     <div class="payment">
                                         <span class="underline">Payment Informations:</span>
-                                    </div>    
+                                    </div>
                                     <div class="payment">ACCOUNT HOLDER: "3TD SOLUTIONS SDN BHD"</div>
                                     <div class="payment">CIMB BANK: 8602538985</div>
                                 </td>
@@ -550,10 +552,10 @@
                 </tr>
             </table>
             <br>
-            
+
             {{-- start signature section --}}
-            
-            @php 
+
+            @php
                 // $sign = 1;
                 $sign = 2;
                 // $sign = 3;
@@ -579,10 +581,10 @@
                             </td>
                             <td></td>
                             <td>&nbsp;</td>
-                        </tr>   
+                        </tr>
                     </table>
                     @break
-            
+
                 @case( $sign == 2 )
                     <table class="footer-b">
                         <tr>
@@ -602,21 +604,23 @@
                             </td>
                             <td></td>
                             <td>Signature and Stamp</td>
-                        </tr>   
+                        </tr>
                         </table>
                     @break
-                        
-                @default    
+
+                @default
                 <table class="footer-b">
                     <tr>
                         <td style="width:30%; font-size:11pt; font-style:bold">This is a computer-generated document. No signature is required.</td>
                     </tr>
                 </table>
-            @endswitch    
+            @endswitch
             {{-- end signature section --}}
-      
+
         </div>
-       {{-- end footer section --}} 
+       {{-- end footer section --}}
+
+
     </main>
 
     <script type="text/php">
@@ -630,6 +634,6 @@
             $pdf->page_text($x, $y, $text, $font, $size);
         }
     </script>
-    
+
 </body>
 </html>
